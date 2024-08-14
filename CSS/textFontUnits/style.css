@@ -1,0 +1,12 @@
+body{
+    margin: 0;
+}
+*{
+    box-sizing: border-box;
+}
+a{
+    /* text-decoration-line: underline;
+    text-decoration-color: red;
+    text-decoration-thickness: 10px; */
+    /* text-decoration: underline red 1px dotted; */
+}
