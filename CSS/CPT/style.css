@@ -1,0 +1,19 @@
+img {
+    width: 40px;
+}
+
+.content>p {
+    background-color: #eee;
+    font-size: 1.5rem;
+    padding: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+.content {
+    display: none;
+}
+
+.icon:active~.content {
+    display: block;
+}
