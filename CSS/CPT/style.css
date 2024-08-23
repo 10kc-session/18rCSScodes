@@ -2,6 +2,10 @@ img {
     width: 40px;
 }
 
+#checkbox {
+    display: none;
+}
+
 .content>p {
     background-color: #eee;
     font-size: 1.5rem;
@@ -11,9 +15,11 @@ img {
 }
 
 .content {
-    display: none;
+    max-height: 0px;
+    overflow: hidden;
+    transition: 0.4s ease;
 }
 
-.icon:active~.content {
-    display: block;
+#checkbox:checked+.content {
+    max-height: 300px;
 }
