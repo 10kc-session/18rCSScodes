@@ -7,34 +7,71 @@ body {
     box-sizing: border-box;
 }
 
-.container>.item {
-    background-color: #203040;
-    color: white;
-    font-size: 2.5rem;
-    text-align: center;
-}
-
 .container {
     display: grid;
-    grid-gap: 10px;
-    height: 100vh;
     grid-template-columns: repeat(4, 1fr);
+    height: 100vh;
+    grid-gap: 20px;
+    grid-template-areas:
+        "a b b c"
+        "a d e f"
+        "a g h f";
 }
 
-.item1 {
-    grid-column: 1/2;
-    grid-row: 1/4;
+.container> :nth-child(1) {
+    grid-area: a;
 }
 
-.item2 {
-    grid-column: 2/4;
+.container> :nth-child(2) {
+    grid-area: b;
 }
 
-.item3 {
-    grid-column: 4/5;
+.container> :nth-child(3) {
+    grid-area: c;
 }
 
-.item6 {
-    grid-row: 2/4;
-    grid-column: 4/5;
+.container> :nth-child(4) {
+    grid-area: d;
+}
+
+.container> :nth-child(5) {
+    grid-area: e;
+}
+
+.container> :nth-child(6) {
+    grid-area: f;
+}
+
+.container> :nth-child(7) {
+    grid-area: g;
+}
+
+.container> :nth-child(8) {
+    grid-area: h;
+}
+
+:root {
+    --repeatedColor: rgb(65, 147, 35);
+    --repeatedColor2: rgb(224, 87, 87);
+    --repeatedColor3: #cc7135;
+    --primary-color: #ADFA9B;
+    --secondary-color: #FFFFFE;
+    --accent-color: #609F3F;
+}
+
+.container> :nth-child(1),
+.container> :nth-child(2),
+.container> :nth-child(6) {
+    background-color: var(--repeatedColor);
+}
+
+.container> :nth-child(3),
+.container> :nth-child(5),
+.container> :nth-child(7) {
+    background-color: var(--repeatedColor2);
+}
+
+.container> :nth-child(4),
+.container> :nth-child(8) {
+    background-color: var(--repeatedColor3);
 }
