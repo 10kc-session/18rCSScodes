@@ -1,77 +1,57 @@
+html,
 body {
     margin: 0px;
     padding: 0px;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 * {
     box-sizing: border-box;
 }
 
-.container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    height: 100vh;
-    grid-gap: 20px;
-    grid-template-areas:
-        "a b b c"
-        "a d e f"
-        "a g h f";
-}
-
-.container> :nth-child(1) {
-    grid-area: a;
-}
-
-.container> :nth-child(2) {
-    grid-area: b;
-}
-
-.container> :nth-child(3) {
-    grid-area: c;
-}
-
-.container> :nth-child(4) {
-    grid-area: d;
-}
-
-.container> :nth-child(5) {
-    grid-area: e;
-}
-
-.container> :nth-child(6) {
-    grid-area: f;
-}
-
-.container> :nth-child(7) {
-    grid-area: g;
-}
-
-.container> :nth-child(8) {
-    grid-area: h;
-}
-
 :root {
-    --repeatedColor: rgb(65, 147, 35);
-    --repeatedColor2: rgb(224, 87, 87);
-    --repeatedColor3: #cc7135;
     --primary-color: #ADFA9B;
     --secondary-color: #FFFFFE;
     --accent-color: #609F3F;
 }
 
-.container> :nth-child(1),
-.container> :nth-child(2),
-.container> :nth-child(6) {
-    background-color: var(--repeatedColor);
+.container {
+    width: 400px;
+    height: 300px;
+    background-color: var(--primary-color);
+    border-radius: 16px;
+    box-shadow: 1px 1px 10px #ccc;
 }
 
-.container> :nth-child(3),
-.container> :nth-child(5),
-.container> :nth-child(7) {
-    background-color: var(--repeatedColor2);
+.text-content {
+    display: flex;
+    gap: 30px;
+    color: var(--secondary-color);
+    justify-content: end;
+    padding-right: 40px;
+    margin-bottom: 50px;
 }
 
-.container> :nth-child(4),
-.container> :nth-child(8) {
-    background-color: var(--repeatedColor3);
+button {
+    background-color: var(--accent-color);
+    border-radius: 24px;
+    color: var(--secondary-color);
+    padding: 10px;
+    border: 0px;
+}
+
+.button-styles {
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+}
+
+h2 {
+    text-align: center;
+    text-align-last: center;
+    padding: 20px;
 }
