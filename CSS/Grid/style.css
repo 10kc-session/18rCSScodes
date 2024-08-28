@@ -1,58 +1,40 @@
-.container>div {
-    font-size: 2rem;
-    /* padding: 10px; */
-    text-align: center;
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container>.item {
+    background-color: #203040;
     color: white;
-    font-weight: 600;
-}
-
-.item1 {
-    background-color: lightblue;
-}
-
-.item2 {
-    background-color: lightcoral;
-}
-
-.item3 {
-    background-color: lightgreen;
-}
-
-.item4 {
-    background-color: rgb(13, 53, 99);
-}
-
-.item5 {
-    background-color: rgb(31, 134, 31);
-}
-
-.item6 {
-    background-color: rgb(79, 42, 180);
-}
-
-.item7 {
-    background-color: rgb(166, 133, 32);
-}
-
-.item8 {
-    background-color: rgb(104, 108, 60);
-}
-
-.item9 {
-    background-color: rgb(173, 62, 40);
+    font-size: 2.5rem;
+    text-align: center;
 }
 
 .container {
     display: grid;
-    grid-template-columns: repeat(3, 400px);
-    grid-template-rows: repeat(3, 400px);
-    grid-gap: 30px;
-    justify-content: center;
+    grid-gap: 10px;
+    height: 100vh;
+    grid-template-columns: repeat(4, 1fr);
 }
 
-img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.item1 {
+    grid-column: 1/2;
+    grid-row: 1/4;
+}
+
+.item2 {
+    grid-column: 2/4;
+}
+
+.item3 {
+    grid-column: 4/5;
+}
+
+.item6 {
+    grid-row: 2/4;
+    grid-column: 4/5;
 }
