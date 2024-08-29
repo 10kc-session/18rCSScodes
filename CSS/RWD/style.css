@@ -7,40 +7,19 @@ body {
     box-sizing: border-box;
 }
 
-.header {
-    display: flex;
-    background-color: black;
-    height: 80px;
-    color: white;
-    font-size: 1.5rem;
-    padding: 10px;
-    justify-content: space-between;
-    align-items: center;
-}
-
 img {
-    width: 80px;
+    width: 100%;
 }
 
-.text-content {
-    display: flex;
-    gap: 20px;
+img+div {
+    text-align: center;
+    text-align-last: center;
 }
 
-#checkbox {
-    display: none;
-}
-
-.ham {
-    display: none;
-}
-
-@media screen and (max-width : 580px) {
-    .text-content {
-        display: none;
-    }
-
-    .ham {
-        display: block;
+@media screen and (min-width : 600px) {
+    .item {
+        display: inline-block;
+        width: 22%;
+        vertical-align: top;
     }
 }
