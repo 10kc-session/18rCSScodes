@@ -7,14 +7,40 @@ body {
     box-sizing: border-box;
 }
 
-.container {
-    background-color: #203040;
-    width: 200px;
-    height: 200px;
+.header {
+    display: flex;
+    background-color: black;
+    height: 80px;
+    color: white;
+    font-size: 1.5rem;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
 }
 
-@media screen and (min-width : 600px) and (max-width : 800px) {
-    .container {
-        background-color: #ff000f;
+img {
+    width: 80px;
+}
+
+.text-content {
+    display: flex;
+    gap: 20px;
+}
+
+#checkbox {
+    display: none;
+}
+
+.ham {
+    display: none;
+}
+
+@media screen and (max-width : 580px) {
+    .text-content {
+        display: none;
+    }
+
+    .ham {
+        display: block;
     }
 }
