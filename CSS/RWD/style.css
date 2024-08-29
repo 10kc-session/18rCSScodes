@@ -7,19 +7,22 @@ body {
     box-sizing: border-box;
 }
 
-img {
-    width: 100%;
+.container {
+    display: flex;
+    background-color: #203040;
+    color: #fff;
+    padding: 10px;
+    font-size: 1.8rem;
+    align-items: center;
+    justify-content: space-between;
 }
 
-img+div {
-    text-align: center;
-    text-align-last: center;
-}
+@media screen and (max-width : 430px) {
+    .about {
+        display: none;
+    }
 
-@media screen and (min-width : 600px) {
-    .item {
-        display: inline-block;
-        width: 22%;
-        vertical-align: top;
+    .container> :nth-child(3) {
+        display: none;
     }
 }
