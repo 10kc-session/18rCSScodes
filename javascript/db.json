@@ -1,0 +1,29 @@
+{
+  "employees": [
+    {
+      "id": "1",
+      "name": "Mallesh",
+      "jobrole": "FE"
+    },
+    {
+      "id": "2",
+      "name": "Srinivas",
+      "jobrole": "BA"
+    },
+    {
+      "id": "4",
+      "name": "Sai kiran",
+      "jobrole": "Mama Momo's Owner"
+    },
+    {
+      "id": "6f1b",
+      "name": "Sudheer",
+      "jobrole": "Mama Momo's Co Owner"
+    },
+    {
+      "id": "5",
+      "name": "Dinesh",
+      "jobrole": "FD"
+    }
+  ]
+}
