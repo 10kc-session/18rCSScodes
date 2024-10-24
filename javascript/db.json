@@ -1,29 +1,28 @@
 {
-  "employees": [
-    {
-      "id": "1",
-      "name": "Mallesh",
-      "jobrole": "FE"
-    },
+  "products": [
     {
       "id": "2",
-      "name": "Srinivas",
-      "jobrole": "BA"
+      "product": "Laptop"
+    },
+    {
+      "id": "3",
+      "product": "Bottle"
     },
     {
       "id": "4",
-      "name": "Sai kiran",
-      "jobrole": "Mama Momo's Owner"
-    },
-    {
-      "id": "6f1b",
-      "name": "Sudheer",
-      "jobrole": "Mama Momo's Co Owner"
+      "product": "Book"
     },
     {
       "id": "5",
-      "name": "Dinesh",
-      "jobrole": "FD"
+      "product": "Kitkat"
+    },
+    {
+      "id": "7",
+      "product": "Bag"
+    },
+    {
+      "id": "8",
+      "product": "Smartphones"
     }
   ]
 }
