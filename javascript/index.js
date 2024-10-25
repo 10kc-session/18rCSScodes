@@ -1,20 +1,19 @@
+let div = document.createElement("div");
+let img = document.createElement("img");
+let p = document.createElement("p");
+// Container
+div.className = "container";
 
-let deleteData = async (url, options) => {
-    let res = await fetch(url, options);
-    if (res.ok) {
-        console.log("Data Deleted");
-    }
-}
-let execute = async () => {
-    let temp = 'http://localhost:5000/products/';
-    let res = await fetch(temp);
-    let data = await res.json();
-    data.forEach(obj => {
-        let options = {
-            "method": "DELETE"
-        }
-        let url = `${temp}${obj["id"]}`
-        deleteData(url, options);
-    });
-}
-execute();
+// Image
+img.src = "../allfiles/Cat.jpg";
+img.className = "img";
+img.alt = "Cat Image";
+
+// Paragraph
+p.innerText = "Cat Image";
+
+// div.appendChild(img);
+// div.appendChild(p);
+
+div.append(img, p);
+document.body.appendChild(div);
