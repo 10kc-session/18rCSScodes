@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel in Bootstrap</title>
+    <link rel="stylesheet" href="../bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+</head>
+
+<body class="container-fluid">
+    <!-- data-bs-theme="dark" -->
+    <div class="carousel slide" data-bs-ride="carousel" id="banners">
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="1000">
+                <img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/2152c9d0afe3352d.jpg?q=20" alt=""
+                    class="d-block w-100">
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+                <img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/e7554fcdb3042316.jpg?q=20" alt=""
+                    class="d-block w-100">
+            </div>
+            <button class="carousel-control-prev" data-bs-target="#banners" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" data-bs-target="#banners" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+            <div class="carousel-indicators">
+                <button class="active rounded rounded-circle" style="height: 4px; width: 8px;" data-bs-slide-to="0"
+                    data-bs-target="#banners"></button>
+                <button data-bs-slide-to="1" data-bs-target="#banners"></button>
+            </div>
+
+        </div>
+        <script src="../bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,28 +1,3 @@
 {
-  "products": [
-    {
-      "id": "2",
-      "product": "Laptop"
-    },
-    {
-      "id": "3",
-      "product": "Bottle"
-    },
-    {
-      "id": "4",
-      "product": "Book"
-    },
-    {
-      "id": "5",
-      "product": "Kitkat"
-    },
-    {
-      "id": "7",
-      "product": "Bag"
-    },
-    {
-      "id": "8",
-      "product": "Smartphones"
-    }
-  ]
+  "products": []
 }
