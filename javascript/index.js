@@ -1,19 +1,48 @@
-let div = document.createElement("div");
-let img = document.createElement("img");
-let p = document.createElement("p");
-// Container
-div.className = "container";
+// https,//fakestoreapi.com/products
 
-// Image
-img.src = "../allfiles/Cat.jpg";
-img.className = "img";
-img.alt = "Cat Image";
+let table = document.createElement("table");
+let thead = document.createElement("thead");
+let trHead = document.createElement("tr");
 
-// Paragraph
-p.innerText = "Cat Image";
+let headings = ["id", "title", "price", "description", "category", "image", "rating"];
 
-// div.appendChild(img);
-// div.appendChild(p);
+for (let element of headings) {
+    let th = document.createElement("th");
+    th.innerText = element;
+    trHead.appendChild(th);
+}
 
-div.append(img, p);
-document.body.appendChild(div);
+let tbody = document.createElement("tbody");
+
+let getData = async () => {
+    let res = await fetch("https://fakestoreapi.com/products");
+    let data = await res.json();
+    for (let obj of data) {
+        let tr = document.createElement("tr");
+        for (let key in obj) {
+            let td = document.createElement("td");
+            if (key === "rating") {
+                td.innerText = `${obj[key]["rate"]} - (${obj[key]["count"]})`
+            }
+            else if (key === "image") {
+                let img = document.createElement("img");
+                img.src = obj[key];
+                td.appendChild(img);
+            }
+            else {
+                td.innerText = obj[key];
+            }
+            tr.appendChild(td);
+        }
+        tbody.appendChild(tr);
+    }
+    appendData();
+}
+
+getData();
+
+function appendData() {
+    thead.appendChild(trHead);
+    table.append(thead, tbody);
+    document.body.appendChild(table);
+}
