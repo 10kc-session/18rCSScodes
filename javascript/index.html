@@ -4,34 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dom Manipulations</title>
-    <style>
-        table,
-        th,
-        tr,
-        td {
-            border: 2px solid;
-            border-collapse: collapse;
-            padding: 20px;
-        }
-
-        th {
-            font-size: 2rem;
-        }
-
-        table {
-            /* width: 100%; */
-            text-align: center;
-        }
-
-        img {
-            width: 100%;
-        }
-    </style>
+    <title>Json Server Data</title>
 </head>
 
 <body>
-    <script src="index.js"></script>
+    <label for="name">Product Name</label><br>
+    <input type="text" name="name" id="name" autocomplete="off">
+    <br>
+    <label for="price">Product Price</label> <br>
+    <input type="text" name="price" id="price" autocomplete="off">
+    <br>
+    <input type="button" value="Add Data" onclick="postData()">
+    <div id="container"></div>
+    <script src="./index.js"></script>
 </body>
 
 </html>

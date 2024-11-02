@@ -1,48 +1,77 @@
-// https,//fakestoreapi.com/products
+const URL = "http://localhost:5000/products";
 
-let table = document.createElement("table");
-let thead = document.createElement("thead");
-let trHead = document.createElement("tr");
+let container = document.getElementById("container");
+let name = document.getElementById("name");
+let price = document.getElementById("price");
 
-let headings = ["id", "title", "price", "description", "category", "image", "rating"];
-
-for (let element of headings) {
-    let th = document.createElement("th");
-    th.innerText = element;
-    trHead.appendChild(th);
-}
-
-let tbody = document.createElement("tbody");
-
-let getData = async () => {
-    let res = await fetch("https://fakestoreapi.com/products");
-    let data = await res.json();
-    for (let obj of data) {
-        let tr = document.createElement("tr");
+// To Print The Data 
+async function getData() {
+    container.innerHTML = '';
+    let response = await fetch(URL);
+    let data = await response.json();
+    data.forEach(obj => {
+        let div = document.createElement("div");
         for (let key in obj) {
-            let td = document.createElement("td");
-            if (key === "rating") {
-                td.innerText = `${obj[key]["rate"]} - (${obj[key]["count"]})`
-            }
-            else if (key === "image") {
-                let img = document.createElement("img");
-                img.src = obj[key];
-                td.appendChild(img);
-            }
-            else {
-                td.innerText = obj[key];
-            }
-            tr.appendChild(td);
+            let p = document.createElement("p");
+            p.innerText = obj[key];
+            div.appendChild(p);
         }
-        tbody.appendChild(tr);
+
+        // Created Remove Button 
+        let button = document.createElement('button');
+        button.textContent = "Remove";
+
+        button.onclick = () => {
+            deleteData(obj["id"]);
+            div.remove();
+        }
+        div.appendChild(button);
+        container.appendChild(div);
+    });
+}
+
+
+async function deleteData(id) {
+    let response = await fetch('http://localhost:5000/products/' + id, {
+        "method": "DELETE"
+    });
+    if (response.ok) {
+        alert("Data Deleted");
     }
-    appendData();
 }
 
-getData();
 
-function appendData() {
-    thead.appendChild(trHead);
-    table.append(thead, tbody);
-    document.body.appendChild(table);
+
+// To Collect Data from input tag
+let count = 0;
+function postData() {
+    count = count + 1;
+    let options = {
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": JSON.stringify({
+            "id": count.toString(),
+            "name": name.value,
+            "price": price.value
+        })
+    }
+    insertDataToJsonServer(URL, options);
 }
+
+// To Insert Data into JSON server
+async function insertDataToJsonServer(URL, options) {
+    price.value = '';
+    name.value = '';
+    let response = await fetch(URL, options);
+    if (response.ok) {
+        alert("Data Inserted");
+        getData();
+    }
+    else {
+        alert("Something Went Wrong ", response.statusText);
+    }
+}
+
+window.onload = getData;
