@@ -1,41 +1,54 @@
-let output = document.getElementById("output");
+let input = document.querySelector("input");
 
-window.addEventListener("DOMContentLoaded", () => {
-    output.innerText = "DOM Loaded"
-})
-document.getElementById("mouseOver").addEventListener("mouseover", () => {
-    output.innerText = "Mouse Hovered On Me";
-});
+let passwordMessage = document.getElementById("passwordMessage");
 
-document.getElementById("mouseOut").addEventListener("mouseout", () => {
-    output.innerText = "Mouse Out";
-})
+// let pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[@!#$%^]).{8,}$/
 
-document.getElementById("click").onclick = () => {
-    output.innerText = "Clicked On Me"
-    output.classList.add("text");
-}
-
-document.getElementById("dbClick").ondblclick = () => {
-    output.innerText = "Double Click";
-}
-let input = document.getElementById("data");
-input.addEventListener("input", () => {
-    output.innerText = input.value.toUpperCase();
-})
-
-input.addEventListener("blur", () => {
-    if (input.value.length === 0) {
-        document.querySelector("span").innerText = "Please Enter Data";
+document.getElementById("form").addEventListener("submit", (event) => {
+    // if (!pattern.test(input.value)) {
+    //     passwordMessage.innerText = "Hogaya"
+    //     event.preventDefault();
+    // }
+    // else {
+    //     passwordMessage.innerText = ''
+    // }
+    if (input.value.length >= 8) {
+        let numberFlag = false;
+        let spc = '@!#$%^&*';
+        let data = input.value;
+        for (let i = 0; i <= 9; i++) {
+            if (data.includes(i)) {
+                numberFlag = true;
+                break;
+            }
+        }
+        let specialFlag = false;
+        for (let char of spc) {
+            if (data.includes(char)) {
+                specialFlag = true;
+                break;
+            }
+        }
+        let smallFlag = false;
+        let capFlag = false;
+        for (let index in data) {
+            let char = data.charCodeAt(index);
+            if (char >= 65 && char <= 90) {
+                smallFlag = true;
+            }
+            if (char >= 97 && char <= 122) {
+                capFlag = true;
+            }
+        }
+        if (!(smallFlag && capFlag && numberFlag && specialFlag)) {
+            passwordMessage.innerText = "pwd must container num , cap , smalls , special";
+            event.preventDefault();
+        }
+        else {
+            passwordMessage.innerText = '';
+        }
+    } else {
+        passwordMessage.innerText = "Password Length >= 8"
+        event.preventDefault();
     }
-    else {
-        document.querySelector("span").innerText = '';
-    }
-    input.classList.remove("focus");
-    output.innerText = "Bye Bye"
 })
-
-input.addEventListener("focus", () => {
-    input.classList.add("focus");
-})
-
