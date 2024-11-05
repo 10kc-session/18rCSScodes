@@ -4,18 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Json Server Data</title>
+    <title>Document</title>
+    <style>
+        button {
+            margin: 10px;
+            padding: 10px;
+        }
+
+        #output {
+            padding: 20px;
+            background-color: #eee;
+            min-height: 100px;
+            margin: 10px;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .text {
+            background-color: #203040 !important;
+            color: red;
+            /* width: fit-content; */
+        }
+
+        input {
+            padding: 10px;
+            font-size: 1.2rem;
+        }
+
+        input::placeholder {
+            text-align: center;
+        }
+
+        span {
+            color: red;
+            font-size: 1.2rem;
+        }
+
+        .focus {
+            border: 2px solid greenyellow;
+            outline: none;
+        }
+    </style>
 </head>
 
 <body>
-    <label for="name">Product Name</label><br>
-    <input type="text" name="name" id="name" autocomplete="off">
-    <br>
-    <label for="price">Product Price</label> <br>
-    <input type="text" name="price" id="price" autocomplete="off">
-    <br>
-    <input type="button" value="Add Data" onclick="postData()">
-    <div id="container"></div>
+    <button id="mouseOver">Hover On Me</button>
+    <button id="mouseOut">Hover Out</button>
+    <button id="click">Click On Me</button>
+    <button id="dbClick">Double Click</button>
+    <input type="text" name="data" id="data" placeholder="Enter Data" maxlength="10">
+    <span></span>
+    <div id="output"></div>
     <script src="./index.js"></script>
 </body>
 

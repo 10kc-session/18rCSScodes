@@ -1,77 +1,41 @@
-const URL = "http://localhost:5000/products";
+let output = document.getElementById("output");
 
-let container = document.getElementById("container");
-let name = document.getElementById("name");
-let price = document.getElementById("price");
+window.addEventListener("DOMContentLoaded", () => {
+    output.innerText = "DOM Loaded"
+})
+document.getElementById("mouseOver").addEventListener("mouseover", () => {
+    output.innerText = "Mouse Hovered On Me";
+});
 
-// To Print The Data 
-async function getData() {
-    container.innerHTML = '';
-    let response = await fetch(URL);
-    let data = await response.json();
-    data.forEach(obj => {
-        let div = document.createElement("div");
-        for (let key in obj) {
-            let p = document.createElement("p");
-            p.innerText = obj[key];
-            div.appendChild(p);
-        }
+document.getElementById("mouseOut").addEventListener("mouseout", () => {
+    output.innerText = "Mouse Out";
+})
 
-        // Created Remove Button 
-        let button = document.createElement('button');
-        button.textContent = "Remove";
-
-        button.onclick = () => {
-            deleteData(obj["id"]);
-            div.remove();
-        }
-        div.appendChild(button);
-        container.appendChild(div);
-    });
+document.getElementById("click").onclick = () => {
+    output.innerText = "Clicked On Me"
+    output.classList.add("text");
 }
 
-
-async function deleteData(id) {
-    let response = await fetch('http://localhost:5000/products/' + id, {
-        "method": "DELETE"
-    });
-    if (response.ok) {
-        alert("Data Deleted");
-    }
+document.getElementById("dbClick").ondblclick = () => {
+    output.innerText = "Double Click";
 }
+let input = document.getElementById("data");
+input.addEventListener("input", () => {
+    output.innerText = input.value.toUpperCase();
+})
 
-
-
-// To Collect Data from input tag
-let count = 0;
-function postData() {
-    count = count + 1;
-    let options = {
-        "method": "POST",
-        "headers": {
-            "Content-Type": "application/json"
-        },
-        "body": JSON.stringify({
-            "id": count.toString(),
-            "name": name.value,
-            "price": price.value
-        })
-    }
-    insertDataToJsonServer(URL, options);
-}
-
-// To Insert Data into JSON server
-async function insertDataToJsonServer(URL, options) {
-    price.value = '';
-    name.value = '';
-    let response = await fetch(URL, options);
-    if (response.ok) {
-        alert("Data Inserted");
-        getData();
+input.addEventListener("blur", () => {
+    if (input.value.length === 0) {
+        document.querySelector("span").innerText = "Please Enter Data";
     }
     else {
-        alert("Something Went Wrong ", response.statusText);
+        document.querySelector("span").innerText = '';
     }
-}
+    input.classList.remove("focus");
+    output.innerText = "Bye Bye"
+})
 
-window.onload = getData;
+input.addEventListener("focus", () => {
+    input.classList.add("focus");
+})
+
