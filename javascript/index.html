@@ -4,52 +4,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BOM</title>
     <style>
-        html {
-            height: 100%;
-        }
-
         body {
-            /* margin: 0 auto; */
-            display: grid;
-            place-items: center;
-            height: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
         }
 
-        .text {
-            background-color: #203040 !important;
-            color: red;
-            /* width: fit-content; */
+        .container {
+            display: flex;
+            flex-direction: column;
+            background-color: #ccc;
+            border-radius: 10px;
         }
 
-        input {
+        .item {
+            background-color: #eee;
+            margin: 10px;
             padding: 10px;
-            font-size: 1.2rem;
+            border-radius: 10px;
+            border: 1px solid;
+            font-size: 1.5rem;
         }
 
-        input::placeholder {
-            text-align: center;
+        button {
+            padding: 10px;
+            margin: 10px;
         }
 
-        span {
-            color: red;
-            /* text-align: center; */
-        }
-
-        .focus {
-            border: 2px solid greenyellow;
-            outline: none;
+        img {
+            width: 100px;
+            
         }
     </style>
 </head>
 
 <body>
-    <form action="./response.html" method="get" id="form">
-        <input type="text" name="Password" id="password" placeholder="Enter Password"><br>
-        <span id="passwordMessage"></span> <br>
-        <input type="submit" value="Login">
-    </form>
+    <button>Filter Data By Electronics</button>
+    <div class="container">
+
+    </div>
     <script src="./index.js"></script>
 </body>
 

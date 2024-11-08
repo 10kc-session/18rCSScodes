@@ -1,54 +1,58 @@
-let input = document.querySelector("input");
+let container = document.getElementsByClassName("container")[0];
+let btn = document.querySelector("button");
 
-let passwordMessage = document.getElementById("passwordMessage");
-
-// let pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[@!#$%^]).{8,}$/
-
-document.getElementById("form").addEventListener("submit", (event) => {
-    // if (!pattern.test(input.value)) {
-    //     passwordMessage.innerText = "Hogaya"
-    //     event.preventDefault();
-    // }
-    // else {
-    //     passwordMessage.innerText = ''
-    // }
-    if (input.value.length >= 8) {
-        let numberFlag = false;
-        let spc = '@!#$%^&*';
-        let data = input.value;
-        for (let i = 0; i <= 9; i++) {
-            if (data.includes(i)) {
-                numberFlag = true;
-                break;
-            }
-        }
-        let specialFlag = false;
-        for (let char of spc) {
-            if (data.includes(char)) {
-                specialFlag = true;
-                break;
-            }
-        }
-        let smallFlag = false;
-        let capFlag = false;
-        for (let index in data) {
-            let char = data.charCodeAt(index);
-            if (char >= 65 && char <= 90) {
-                smallFlag = true;
-            }
-            if (char >= 97 && char <= 122) {
-                capFlag = true;
-            }
-        }
-        if (!(smallFlag && capFlag && numberFlag && specialFlag)) {
-            passwordMessage.innerText = "pwd must container num , cap , smalls , special";
-            event.preventDefault();
-        }
-        else {
-            passwordMessage.innerText = '';
-        }
+btn.addEventListener("click", () => {
+    let data = JSON.parse(localStorage.getItem("data")) || [];
+    if (data.length === 0) {
+        alert("No Data Available");
+        displayData(data);
     } else {
-        passwordMessage.innerText = "Password Length >= 8"
-        event.preventDefault();
+        let result = data.filter(obj => obj["category"] === "electronics");
+        displayData(result);
     }
 })
+
+async function getData() {
+    let response = await fetch("https://fakestoreapi.com/products");
+    let data = await response.json();
+    localStorage.setItem("data", JSON.stringify(data));
+    displayData(data);
+}
+
+function displayData(data) {
+    container.innerHTML = "";
+    // let data = JSON.parse(localStorage.getItem("data")) || [];
+    if (data.length === 0) {
+        alert("No Data Available");
+    } else {
+        data.forEach((obj, index) => {
+            let div = document.createElement("div");
+            div.className = "item";
+            div.innerHTML =
+                `<p><b>ID : </b>${obj["id"]}</p>
+                <p><b>TITLE : </b>${obj["title"]}</p>
+                <p><b>PRICE : </b>${obj["price"]}</p>
+                <p><b>DESCRIPTION : </b>${obj["description"]}</p>
+                <p><b>CATEGORY : </b>${obj["category"]}</p>
+                <img src = ${obj["image"]}>`;
+            let button = document.createElement("button");
+            button.textContent = "Delete";
+            div.appendChild(button);
+
+            button.onclick = () => {
+                deleteData(index);
+            }
+
+            container.appendChild(div);
+        });
+    }
+}
+
+function deleteData(index) {
+    let data = JSON.parse(localStorage.getItem("data")) || [];
+    data.splice(index, 1);
+    localStorage.setItem("data", JSON.stringify(data));
+    displayData(data);
+}
+
+getData();
