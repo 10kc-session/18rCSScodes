@@ -1,58 +1,57 @@
-let container = document.getElementsByClassName("container")[0];
-let btn = document.querySelector("button");
-
-btn.addEventListener("click", () => {
-    let data = JSON.parse(localStorage.getItem("data")) || [];
-    if (data.length === 0) {
-        alert("No Data Available");
-        displayData(data);
+let output = document.getElementById("output");
+let newWindow;
+document.getElementById("openWindow").addEventListener("click", () => {
+    newWindow = window.open("http://127.0.0.1:5500/javascript/index.html", "_blank", "width=500,height=500");
+    output.innerText = "New Window Opened";
+})
+document.getElementById("closeWindow").addEventListener("click", () => {
+    newWindow.close();
+    output.innerText = "Window Closed"
+})
+document.getElementById("promptWindow").addEventListener("click", () => {
+    let value = window.prompt("Enter Any Message : ", "Hello There");
+    output.innerText = value;
+})
+document.getElementById("alertWindow").addEventListener("click", () => {
+    window.alert("BOM -> Browser Object Model");
+})
+document.getElementById("confirmWindow").addEventListener("click", () => {
+    let flag = window.confirm("Do you want close the window");
+    if (flag) {
+        newWindow.close();
     } else {
-        let result = data.filter(obj => obj["category"] === "electronics");
-        displayData(result);
+        output.innerText = "Window Not Closed";
     }
 })
-
-async function getData() {
-    let response = await fetch("https://fakestoreapi.com/products");
-    let data = await response.json();
-    localStorage.setItem("data", JSON.stringify(data));
-    displayData(data);
-}
-
-function displayData(data) {
-    container.innerHTML = "";
-    // let data = JSON.parse(localStorage.getItem("data")) || [];
-    if (data.length === 0) {
-        alert("No Data Available");
-    } else {
-        data.forEach((obj, index) => {
-            let div = document.createElement("div");
-            div.className = "item";
-            div.innerHTML =
-                `<p><b>ID : </b>${obj["id"]}</p>
-                <p><b>TITLE : </b>${obj["title"]}</p>
-                <p><b>PRICE : </b>${obj["price"]}</p>
-                <p><b>DESCRIPTION : </b>${obj["description"]}</p>
-                <p><b>CATEGORY : </b>${obj["category"]}</p>
-                <img src = ${obj["image"]}>`;
-            let button = document.createElement("button");
-            button.textContent = "Delete";
-            div.appendChild(button);
-
-            button.onclick = () => {
-                deleteData(index);
-            }
-
-            container.appendChild(div);
+document.getElementById("scrollWindow").addEventListener("click", () => {
+    window.scroll({
+        top: 500,
+        behavior: "smooth"
+    });
+    window.setTimeout(() => {
+        window.scroll({
+            top: 0,
+            behavior: "smooth"
         });
-    }
-}
+    }, 2000)
+})
 
-function deleteData(index) {
-    let data = JSON.parse(localStorage.getItem("data")) || [];
-    data.splice(index, 1);
-    localStorage.setItem("data", JSON.stringify(data));
-    displayData(data);
-}
+document.getElementById("resize").addEventListener("click", () => {
+    newWindow.resizeTo("300", "300");
+})
 
-getData();
+let interval;
+document.getElementById("start").addEventListener("click", () => {
+    let seconds = window.prompt("Enter Seconds");
+    let count = 1;
+    interval = window.setInterval(() => {
+        output.innerText = count++;
+    }, 1000);
+    setTimeout(() => {
+        window.clearInterval(interval);
+    }, +seconds * 1000);
+})
+
+document.getElementById("stop").addEventListener("click", () => {
+    window.clearInterval(interval);
+})

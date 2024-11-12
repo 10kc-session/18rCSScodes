@@ -4,28 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BOM</title>
+    <title>BOM - 2</title>
     <style>
-        body {
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            background-color: #ccc;
-            border-radius: 10px;
-        }
-
-        .item {
-            background-color: #eee;
-            margin: 10px;
-            padding: 10px;
-            border-radius: 10px;
-            border: 1px solid;
-            font-size: 1.5rem;
+        h1 {
+            text-align: center;
         }
 
         button {
@@ -33,18 +15,30 @@
             margin: 10px;
         }
 
-        img {
-            width: 100px;
-            
+        #output {
+            padding: 10px;
+            margin: 10px;
+            background-color: #eee;
+            min-height: 100px;
+            margin-bottom: 1000px;
+            text-align: center;
+            font-size: 2rem;
         }
     </style>
 </head>
 
 <body>
-    <button>Filter Data By Electronics</button>
-    <div class="container">
-
-    </div>
+    <h1>Window Methods</h1>
+    <button id="openWindow">Open New Window</button>
+    <button id="closeWindow">Close Window</button>
+    <button id="promptWindow">Prompt Window</button>
+    <button id="alertWindow">Alert Window</button>
+    <button id="confirmWindow">Confirm Window</button>
+    <button id="scrollWindow">Scroll Window</button>
+    <button id="resize">Resize</button>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <div id="output"></div>
     <script src="./index.js"></script>
 </body>
 
