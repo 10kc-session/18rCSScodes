@@ -4,42 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BOM - 2</title>
-    <style>
-        h1 {
-            text-align: center;
-        }
-
-        button {
-            padding: 10px;
-            margin: 10px;
-        }
-
-        #output {
-            padding: 10px;
-            margin: 10px;
-            background-color: #eee;
-            min-height: 100px;
-            margin-bottom: 1000px;
-            text-align: center;
-            font-size: 2rem;
-        }
-    </style>
+    <title>Document</title>
 </head>
 
 <body>
-    <h1>Window Methods</h1>
-    <button id="openWindow">Open New Window</button>
-    <button id="closeWindow">Close Window</button>
-    <button id="promptWindow">Prompt Window</button>
-    <button id="alertWindow">Alert Window</button>
-    <button id="confirmWindow">Confirm Window</button>
-    <button id="scrollWindow">Scroll Window</button>
-    <button id="resize">Resize</button>
-    <button id="start">Start</button>
-    <button id="stop">Stop</button>
-    <div id="output"></div>
-    <script src="./index.js"></script>
+    <script type="module">
+        import { validateOnInput, name } from './onInputFormValidation.js';
+        // alert(name);
+        import validate, { x } from './formValidation.js';
+        // validate(false);
+        x();
+        // validateOnInput(false);
+        // validate(true);
+    </script>
 </body>
 
 </html>
